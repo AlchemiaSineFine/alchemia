@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>能量維護與祝聖服務｜無界煉金 Alchemia Sine Fine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }, colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A', gold: '#C5A059' } }, letterSpacing: { 'widest-xl': '0.3em' } } } }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .imagery-container { position: relative; overflow: hidden; background-color: #EAEAE8; }
+        .imagery-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) contrast(1.1); transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .imagery-container:hover .imagery-img { transform: scale(1.05); }
+        .img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; background: #1A1A1A; color: #EAEAE8; font-size: 12px; letter-spacing: 0.1em; text-align: center; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+        .service-card { border-top: 2px solid transparent; transition: all 0.3s ease; }
+        .service-card:hover { border-top-color: #D97736; background-color: #ffffff; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="hover:text-alchemia-accent transition-all">煉金知識庫</a>
+                <a href="ritual_sets.html" class="hover:text-alchemia-accent transition-all">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="hover:text-alchemia-accent transition-all">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <div class="relative group cursor-pointer border-b border-alchemia-accent pb-1">
+                    <span class="text-alchemia-dark hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg text-alchemia-accent transition-colors">能量維護與祝聖</a>
+                    </div>
+                </div>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="px-5 py-2 bg-alchemia-dark text-white hover:bg-alchemia-accent transition-all">預購表單</a>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2 text-alchemia-accent">能量維護與祝聖</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="block py-3 bg-alchemia-dark text-white">預購表單</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="h-[60vh] flex flex-col justify-center items-center text-center px-6 pt-20 bg-alchemia-dark text-white relative overflow-hidden">
+        <div class="z-10" data-aos="fade-up" data-aos-duration="1200">
+            <span class="text-alchemia-accent text-xs tracking-widest-xl uppercase mb-6 block font-medium">After-Sales & Maintenance</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 tracking-widest leading-tight uppercase">能量維護與祝聖</h1>
+            <div class="w-16 h-px bg-white/30 mx-auto my-8"></div>
+            <p class="text-white/60 text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose">萬物皆有靈 ‧ 能量需要流動與守護</p>
+        </div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none flex justify-center items-center">
+            <div class="w-[100vw] h-[100vw] md:w-[60vw] md:h-[60vw] border border-white rounded-full absolute"></div>
+            <div class="w-[80vw] h-[80vw] md:w-[45vw] md:h-[45vw] border border-white rounded-full absolute"></div>
+        </div>
+    </section>
+
+    <!-- 核心理念 -->
+    <section class="py-24 px-6 bg-white border-b border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5" data-aos="fade-right">
+                    <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-4 block font-medium">Energy Renewal</span>
+                    <h2 class="text-3xl font-serif tracking-widest mb-8 leading-snug uppercase">為什麼需要<br>能量維護？</h2>
+                    <div class="space-y-6 text-alchemia-dark text-sm font-light leading-loose text-justify">
+                        <p>在煉金術與魔法運作中，沒有任何能量是一成不變的。魔法物件就像是靈性的電池，當它們日復一日地為您抵擋負面頻率、吸引豐盛或維持空間氣場時，其內部的能量也會隨之消耗或吸附環境中的混濁磁場。</p>
+                        <p>因此，我們提供專業的「能量維護與售後祝聖」服務。這並非單純的保養，而是一次深度的頻率重置，讓您的魔法罐與晶礦法器能持續以最高頻的狀態，陪伴您的生命旅程。</p>
+                        <p class="text-[10px] text-alchemia-accent tracking-widest font-bold mt-4 uppercase">※ 此為無界煉金專屬付費售後服務</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 imagery-container aspect-[16/9] shadow-lg" data-aos="fade-left">
+                    <img src="energy_maintenance_imagery.jpg" alt="能量維護與祝聖意象" class="imagery-img" onerror="this.style.display='none'; document.getElementById('fb-img-m').style.display='flex';">
+                    <div id="fb-img-m" class="img-placeholder" style="display:none;"><span class="font-serif text-lg mb-2">Energy Cleansing</span><span class="opacity-60">[ 建議放置：煙燻淨化、祝聖儀式的攝影照 ]</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務項目詳情 -->
+    <section class="py-24 px-6 bg-alchemia-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-serif tracking-widest uppercase">專屬維護項目</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="service-card bg-white p-10 md:p-14 border border-alchemia-dark/5" data-aos="fade-up">
+                    <div class="mb-8 flex justify-between items-start">
+                        <div>
+                            <span class="text-alchemia-gray font-serif italic text-2xl block mb-2">I.</span>
+                            <h3 class="text-xl font-bold tracking-widest uppercase mb-1">魔法罐重新祝聖充能</h3>
+                            <p class="text-[10px] tracking-widest text-alchemia-accent uppercase">Spell Jar Re-consecration</p>
+                        </div>
+                        <span class="bg-alchemia-dark text-white text-[9px] px-3 py-1 tracking-widest">一年一次</span>
+                    </div>
+                    <div class="space-y-4 text-[12px] text-alchemia-dark leading-loose font-light text-justify">
+                        <p>魔法罐是強大的實體能量錨點。隨著時間推移與願景的顯化，罐內的草藥與晶礦會逐漸消耗其活性。</p>
+                        <p>我們建議<strong>每滿一年</strong>，將魔法罐寄回無界煉金。我們將為您清理已疲乏的能量，替換部分必要的草藥耗材，並重新進行神聖的祝聖與充能儀式，讓豐盛意圖生生不息。</p>
+                    </div>
+                </div>
+                <div class="service-card bg-white p-10 md:p-14 border border-alchemia-dark/5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-8 flex justify-between items-start">
+                        <div>
+                            <span class="text-alchemia-gray font-serif italic text-2xl block mb-2">II.</span>
+                            <h3 class="text-xl font-bold tracking-widest uppercase mb-1">晶礦深度淨化與重置</h3>
+                            <p class="text-[10px] tracking-widest text-alchemia-accent uppercase">Crystal Deep Cleansing</p>
+                        </div>
+                        <span class="bg-alchemia-dark text-white text-[9px] px-3 py-1 tracking-widest">依個人需求</span>
+                    </div>
+                    <div class="space-y-4 text-[12px] text-alchemia-dark leading-loose font-light text-justify">
+                        <p>原礦與水晶法器在協助我們轉化氣場的同時，也會吸收並囤積沉重的能量。當您感覺晶礦的光澤黯淡、觸感沉重時，即是需要淨化的時刻。</p>
+                        <p>晶礦的維護頻率<strong>完全依照您個人的感受與需求</strong>。我們提供專業的物理與乙太層次雙重淨化，破除附著其上的雜亂磁場，並將晶礦重置回最純淨的初始狀態。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 收費說明 -->
+    <section class="py-20 px-6 bg-white border-t border-alchemia-dark/5">
+        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
+            <h3 class="text-xl font-serif tracking-widest uppercase mb-8">關於維護費用的說明</h3>
+            <p class="text-sm text-alchemia-dark leading-loose font-light mb-8">
+                為了確保每一次的充能、祝聖與淨化都能達到最完美的品質，<strong>此兩項售後保養皆為「專屬付費服務」</strong>。
+            </p>
+            <div class="bg-alchemia-bg p-8 text-left inline-block w-full max-w-2xl mx-auto border border-alchemia-dark/10">
+                <ul class="text-xs tracking-widest leading-loose text-alchemia-dark space-y-3">
+                    <li class="flex items-start"><span class="text-alchemia-accent mr-2">✦</span><span><strong>魔法罐充能費用：</strong>將包含基礎耗材替換與重新祝聖的儀式費用。</span></li>
+                    <li class="flex items-start"><span class="text-alchemia-accent mr-2">✦</span><span><strong>晶礦淨化費用：</strong>將依據晶礦的體積大小、原先受汙染/耗損的程度進行個別評估與報價。</span></li>
+                    <li class="flex items-start"><span class="text-alchemia-accent mr-2">✦</span><span><strong>寄送須知：</strong>來回運費需由委託方負擔。晶礦與魔法罐屬於易碎物品，寄送時請務必妥善包裝。</span></li>
+                </ul>
+            </div>
+            <div class="mt-16">
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-12 py-4 bg-alchemia-dark text-white text-[10px] tracking-widest hover:bg-alchemia-accent transition-all uppercase">聯繫我們進行評估報價</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-alchemia-dark text-white py-20 px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0"><span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span></div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent transition-colors">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script> AOS.init({ once: true, duration: 1000 }); </script>
+</body>
+</html>

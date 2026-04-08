@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人星盤客製魔法｜無界煉金 Alchemia Sine Fine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }, colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A', gold: '#C5A059' } }, letterSpacing: { 'widest-xl': '0.3em' } } } }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .process-num { font-family: '"Cormorant Garamond"', serif; font-size: 4rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(26,26,26,0.2); transition: all 0.5s ease; }
+        .process-card:hover .process-num { color: #1A1A1A; -webkit-text-stroke: 0px; }
+        .imagery-container { position: relative; overflow: hidden; background-color: #EAEAE8; }
+        .imagery-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) contrast(1.1) brightness(0.9); transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .imagery-container:hover .imagery-img { transform: scale(1.05); }
+        .img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; background: #1A1A1A; color: #EAEAE8; font-size: 12px; letter-spacing: 0.1em; text-align: center; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="hover:text-alchemia-accent transition-all">煉金知識庫</a>
+                <a href="ritual_sets.html" class="hover:text-alchemia-accent transition-all">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="hover:text-alchemia-accent transition-all">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <div class="relative group cursor-pointer border-b border-alchemia-accent pb-1">
+                    <span class="text-alchemia-dark hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg text-alchemia-accent">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">能量維護與祝聖</a>
+                    </div>
+                </div>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="px-5 py-2 bg-alchemia-dark text-white hover:bg-alchemia-accent transition-all">預購表單</a>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2 text-alchemia-accent">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2">能量維護與祝聖</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="block py-3 bg-alchemia-dark text-white">預購表單</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="h-[65vh] flex flex-col justify-center items-center text-center px-6 pt-20 bg-alchemia-dark text-white relative overflow-hidden">
+        <div class="z-10" data-aos="fade-up" data-aos-duration="1200">
+            <span class="text-alchemia-gold text-xs tracking-widest-xl uppercase mb-6 block font-medium">Bespoke Alchemy II</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 tracking-widest leading-tight uppercase">個人星盤客製魔法</h1>
+            <div class="w-16 h-px bg-white/30 mx-auto my-8"></div>
+            <p class="text-white/60 text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose">As above, so below. <br>將靈魂藍圖的軌跡，凝鍊為專屬的香氣與能量。</p>
+        </div>
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none flex justify-center items-center">
+            <div class="w-[150vw] h-[150vw] md:w-[80vw] md:h-[80vw] border border-white rounded-full absolute rotate-45"></div>
+            <div class="w-[120vw] h-[120vw] md:w-[60vw] md:h-[60vw] border border-white rounded-full absolute -rotate-12"></div>
+        </div>
+    </section>
+
+    <!-- 核心理念 -->
+    <section class="py-24 px-6 bg-white border-b border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-24">
+                <div class="lg:col-span-5" data-aos="fade-right">
+                    <h2 class="text-3xl font-serif tracking-widest mb-8 leading-snug uppercase">解碼靈魂的<br>出廠設定。</h2>
+                    <div class="space-y-6 text-alchemia-dark text-sm font-light leading-loose text-justify">
+                        <p>您出生的那一刻，宇宙行星的排列構成了一張獨一無二的本命星盤（Natal Chart），這不僅是性格的解析，更是一份關於您天賦、課題與潛能的「靈魂進化藍圖」。</p>
+                        <p>「個人星盤客製魔法」結合了<span class="font-medium">西洋現代占星、靈魂占星與植物煉金術</span>。我們將親自為您開盤解析，以心理覺察為基礎，找出您命盤中需要被喚醒的深層優勢，或是需要被溫柔療癒的創傷印記，並透過大地植物的頻率為您進行精準的能量調頻。</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 imagery-container aspect-[16/9] shadow-lg" data-aos="fade-left">
+                    <img src="astrology_bespoke_imagery.jpg" alt="星盤客製意象" class="imagery-img" onerror="this.style.display='none'; document.getElementById('fb-img2').style.display='flex';">
+                    <div id="fb-img2" class="img-placeholder" style="display:none;"><span class="font-serif text-lg mb-2">Astrological Chart</span><span class="opacity-60">[ 建議放置：星盤圖與精油/植物結合的攝影照 ]</span></div>
+                </div>
+            </div>
+
+            <!-- 三大客製核心 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-alchemia-dark/10 pt-16">
+                <div data-aos="fade-up">
+                    <span class="text-alchemia-gold font-serif text-2xl italic block mb-4">01</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">專屬本命盤香氣</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">依據您的上升星座、日月落入的宮位及重要相位，提煉出完全契合您靈魂頻率的專屬本命香氣。它能協助您隨時回到最安穩、最有力量的中心狀態。</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-alchemia-gold font-serif text-2xl italic block mb-4">02</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">流年行運補強配方</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">除了本命特質，我們更會疊加當下或即將到來的「流年行運」。為您調配能在特定流年課題中提供心理支持、順應星象浪潮的補強配方，將挑戰轉化為成長的養分。</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-alchemia-gold font-serif text-2xl italic block mb-4">03</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">魔法載體形式討論</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">能量的傳遞方式由您決定。諮詢過程中，我們將與您討論最適合您生活習慣的魔法載體——無論是瞬效轉換的噴霧、深度塗抹的魔法油，亦或是空間定錨的蠟燭/魔法罐。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⚠️ 絕對條件 -->
+    <section class="py-20 px-6 bg-alchemia-bg">
+        <div class="max-w-4xl mx-auto bg-white border border-alchemia-gold/30 p-8 md:p-12 shadow-sm text-center relative" data-aos="zoom-in">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-alchemia-bg px-4"><span class="text-alchemia-gold text-[10px] tracking-widest uppercase font-bold">Important Notice</span></div>
+            <h3 class="text-xl md:text-2xl font-serif tracking-widest uppercase mb-6 mt-4">啟動星盤魔法的唯一鑰匙</h3>
+            <p class="text-sm text-alchemia-dark leading-loose font-light mb-8 max-w-2xl mx-auto">星盤的宮位與上升點每四分鐘就會產生變化。為了確保能量配方能精準對應到正確的生命領域與靈魂課題，<strong class="font-medium text-alchemia-accent">本服務必須具備您「極度準確的出生時間」</strong>。</p>
+            <div class="bg-alchemia-bg/50 border border-alchemia-dark/5 p-6 inline-block text-left mx-auto">
+                <p class="text-[10px] tracking-widest text-alchemia-gray uppercase mb-3 font-bold border-b border-alchemia-dark/10 pb-2">請務必準備以下資訊：</p>
+                <ul class="text-xs tracking-widest leading-loose text-alchemia-dark space-y-2">
+                    <li>✦ 出生西元年、月、日</li><li>✦ 出生時間（必須精確至「分鐘」，強烈建議核對出生證明）</li><li>✦ 出生城市（例如：台灣 台北市）</li>
+                </ul>
+            </div>
+            <p class="text-[9px] text-alchemia-gray mt-6 tracking-widest">※ 若無法取得準確出生時間，很抱歉我們將無法為您提供此項客製服務，建議改選「魔法專題服務」。</p>
+        </div>
+    </section>
+
+    <!-- 服務流程 -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-20 text-center md:text-left" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">The Process</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase">星盤煉金流程</h2>
+            </div>
+            <div class="space-y-12">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-12 items-start group" data-aos="fade-up">
+                    <span class="process-num md:w-32 text-right shrink-0">01</span>
+                    <div class="border-t border-alchemia-dark/10 pt-4 w-full"><h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">提交命盤資訊</h3><p class="text-[11px] text-alchemia-gray leading-loose font-light">填寫預購表單並提供您準確的出生資料。可簡述目前面臨的生命課題或特別希望流年加強的領域。</p></div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-12 items-start group" data-aos="fade-up" data-aos-delay="100">
+                    <span class="process-num md:w-32 text-right shrink-0">02</span>
+                    <div class="border-t border-alchemia-dark/10 pt-4 w-full"><h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">星象解析與載體討論</h3><p class="text-[11px] text-alchemia-gray leading-loose font-light">占星師將為您開盤，並透過線上通訊與您進行對焦。確認本命香氣主調、流年補強重點與最適合的魔法載體形式。</p></div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-12 items-start group" data-aos="fade-up" data-aos-delay="200">
+                    <span class="process-num md:w-32 text-right shrink-0">03</span>
+                    <div class="border-t border-alchemia-dark/10 pt-4 w-full"><h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">個人專屬配方熔煉</h3><p class="text-[11px] text-alchemia-gray leading-loose font-light">選擇與您星盤契合的良辰吉時進行草藥與精油調配，將宇宙星辰的宏觀能量，封存進微觀的植物載體中。</p></div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-12 items-start group" data-aos="fade-up" data-aos-delay="300">
+                    <span class="process-num md:w-32 text-right shrink-0">04</span>
+                    <div class="border-t border-alchemia-dark/10 pt-4 w-full"><h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">能量交付</h3><p class="text-[11px] text-alchemia-gray leading-loose font-light">將專屬星盤魔法產品寄出，並附上「專屬能量說明卡」，指引您如何在日常生活中啟動並與這份香氣共振。</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 bg-alchemia-dark text-white text-center">
+        <div class="max-w-2xl mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-serif tracking-widest mb-8 uppercase">找回屬於你的靈魂香氣。</h2>
+            <p class="text-xs text-white/60 leading-loose font-light mb-12">個人星盤客製需耗費大量時間進行開盤解析與客製調香，<br>目前採完全預約制限額開放。</p>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-12 py-4 bg-alchemia-gold text-alchemia-dark text-[10px] tracking-widest hover:bg-white transition-all uppercase font-bold shadow-lg">申請星盤客製服務</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-alchemia-dark text-white py-20 px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0"><span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span></div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent transition-colors">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script> AOS.init({ once: true, duration: 1000 }); </script>
+</body>
+</html>

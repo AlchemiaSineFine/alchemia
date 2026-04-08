@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法油系列｜無界煉金 Alchemia Sine Fine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }, colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A' } }, letterSpacing: { 'widest-xl': '0.3em' } } } }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .chart-container { position: relative; width: 100%; max-width: 400px; height: 300px; margin: auto; }
+        .product-tab.active { border-color: #1A1A1A; opacity: 1; transform: translateY(-4px); }
+        .ingredient-tag { border: 1px solid rgba(26, 26, 26, 0.15); padding: 6px 14px; font-size: 11px; border-radius: 2px; display: inline-block; margin: 4px; color: #7A7A7A; transition: all 0.3s ease; }
+        .ingredient-tag:hover { border-color: #1A1A1A; color: #1A1A1A; }
+        .base-oil-tag { background-color: #EAEAE8; color: #1A1A1A; padding: 4px 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 8px; display: inline-block; }
+        .imagery-container { position: relative; overflow: hidden; background-color: #EAEAE8; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
+        .imagery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); filter: grayscale(10%) contrast(1.05); }
+        .imagery-container:hover .imagery-img { transform: scale(1.05); }
+        .img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; background: #EAEAE8; color: #7A7A7A; font-size: 12px; letter-spacing: 0.1em; text-align: center; padding: 2rem; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="hover:text-alchemia-accent transition-all">煉金知識庫</a>
+                <a href="ritual_sets.html" class="hover:text-alchemia-accent transition-all">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="text-alchemia-accent transition-all border-b border-alchemia-accent pb-1">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <div class="relative group cursor-pointer border-b border-transparent pb-1">
+                    <span class="hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">能量維護與祝聖</a>
+                    </div>
+                </div>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="px-5 py-2 bg-alchemia-dark text-white hover:bg-alchemia-accent transition-all">預購表單</a>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2 text-alchemia-accent">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2">能量維護與祝聖</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="block py-3 bg-alchemia-dark text-white">預購表單</a>
+        </div>
+    </nav>
+
+    <section class="h-[40vh] md:h-[50vh] flex flex-col justify-center items-center text-center px-6 pt-20 bg-white relative overflow-hidden border-b border-alchemia-dark/5">
+        <div data-aos="fade-up">
+            <span class="text-alchemia-accent text-xs tracking-widest-xl uppercase mb-4 block">Ritual Oils</span>
+            <h1 class="text-4xl md:text-5xl font-serif mb-6 tracking-widest leading-tight uppercase">魔法油系列</h1>
+            <p class="text-alchemia-gray text-[10px] md:text-xs tracking-[0.5em] font-light max-w-xl mx-auto uppercase">將大地的凝萃 ‧ 烙印於個人的氣場</p>
+        </div>
+    </section>
+
+    <section id="collection" class="py-6 bg-alchemia-bg border-b border-alchemia-dark/5 sticky top-[68px] z-40 shadow-sm">
+        <div class="max-w-4xl mx-auto px-6 overflow-x-auto no-scrollbar">
+            <div class="flex justify-start md:justify-center gap-8 md:gap-16 min-w-max pb-2 pt-2">
+                <button onclick="switchProduct('victory')" id="tab-victory" class="product-tab active border-b-2 border-transparent opacity-50 transition-all duration-500 pb-2 text-center w-28">
+                    <span class="font-serif text-base md:text-lg tracking-widest block uppercase mb-1">Victory</span>
+                    <span class="text-[9px] tracking-widest uppercase text-alchemia-gray">勝利之冕</span>
+                </button>
+                <button onclick="switchProduct('breaking')" id="tab-breaking" class="product-tab border-b-2 border-transparent opacity-50 transition-all duration-500 pb-2 text-center w-28">
+                    <span class="font-serif text-base md:text-lg tracking-widest block uppercase mb-1">Oath</span>
+                    <span class="text-[9px] tracking-widest uppercase text-alchemia-gray">破魔之誓</span>
+                </button>
+                <button onclick="switchProduct('mirror')" id="tab-mirror" class="product-tab border-b-2 border-transparent opacity-50 transition-all duration-500 pb-2 text-center w-28">
+                    <span class="font-serif text-base md:text-lg tracking-widest block uppercase mb-1">Manifest</span>
+                    <span class="text-[9px] tracking-widest uppercase text-alchemia-gray">心映萬象</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="py-20 px-6 min-h-screen bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div id="content-display" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start transition-all duration-700">
+                <div class="lg:col-span-5 relative" data-aos="fade-right">
+                    <div class="imagery-container aspect-[4/5] w-full">
+                        <img id="product-img" src="" alt="產品意象圖" class="imagery-img" onerror="handleImageError(this)">
+                        <div id="img-fallback" class="img-placeholder" style="display:none;">
+                            <span class="mb-4 font-serif text-xl italic" id="fallback-title">Image Placeholder</span>
+                            <span>[ 請放入 <span id="fallback-name"></span> 的意象照 ]</span>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-8 -right-4 lg:-right-12 bg-white p-8 border border-alchemia-dark/5 shadow-xl max-w-xs z-10 hidden md:block">
+                        <p id="product-quote" class="font-serif italic text-lg text-alchemia-dark leading-relaxed">"戴上無形的皇冠，讓實力成為你最堅不可摧的鎧甲。"</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 pt-4" data-aos="fade-left">
+                    <div class="flex flex-wrap items-center gap-3 mb-4">
+                        <span class="text-[10px] tracking-widest bg-alchemia-dark text-white px-3 py-1 uppercase">日常常態販售</span>
+                        <span id="product-target" class="text-[10px] tracking-widest border border-alchemia-dark/20 text-alchemia-dark px-3 py-1">適用：自營商 / 業務開發 / 提升地位</span>
+                    </div>
+                    <div id="product-keywords" class="flex flex-wrap gap-3 mb-8 text-[10px] tracking-widest text-alchemia-accent uppercase font-medium"></div>
+                    <h2 id="product-name" class="text-3xl md:text-5xl font-serif tracking-widest leading-tight mb-8 uppercase"></h2>
+                    <div class="w-12 h-px bg-alchemia-dark/20 mb-8"></div>
+                    <div id="product-story" class="text-alchemia-dark leading-[2.2] text-sm font-light space-y-6 mb-12 text-justify"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-10 border-t border-alchemia-dark/5">
+                        <div>
+                            <h3 class="text-[10px] tracking-widest font-bold mb-4 uppercase text-alchemia-gray">煉金配方 Alchemical Notes</h3>
+                            <div id="base-oil" class="base-oil-tag">基底：橄欖油</div>
+                            <div id="ingredient-tags" class="flex flex-wrap gap-2 mt-2"></div>
+                            <div class="mt-8">
+                                <h3 class="text-[10px] tracking-widest font-bold mb-2 uppercase text-alchemia-gray">主要效用 Effect</h3>
+                                <p id="product-effect" class="text-xs text-alchemia-dark leading-relaxed font-medium tracking-widest"></p>
+                            </div>
+                        </div>
+                        <div class="bg-alchemia-bg p-6 border border-alchemia-dark/5">
+                            <h3 class="text-center font-serif tracking-widest text-[10px] mb-4 uppercase text-alchemia-gray">Sensory & Aura Profile</h3>
+                            <div class="chart-container !h-[200px]"><canvas id="scentRadarChart"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="mt-16 text-left flex gap-4">
+                        <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-12 py-4 bg-alchemia-dark text-white text-[10px] tracking-widest hover:bg-alchemia-accent transition-all uppercase">訂購此款魔法油</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-alchemia-dark text-white py-20 px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0"><span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span></div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent">Order Form</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+        function handleImageError(img) { img.style.display = 'none'; document.getElementById('img-fallback').style.display = 'flex'; }
+
+        const productData = {
+            victory: { name: "勝利之冕", subname: "Crown of Victory", target: "自營商 / 業務開發 / 尋求晉升者 (男性效果尤佳)", effect: "提升業界知名度、尋找新開發機會、爭取升官、提升地位、增強信心。", imgSrc: "crown_of_victory_imagery.jpg", keywords: ["#事業擴張", "#權威建立", "#小人退散", "#金牛新月"], story: `<p>勝利之冕的誕生，源自於某個金牛座新月的靜謐之夜。那時的初衷，原只是希望能調配出一款協助人們在物質世界上穩紮穩打、提升業界知名度與業務量的能量配方。</p><p>然而，在經過反覆的煉金轉化與實際測試後，我們驚喜地發現，這款以橄欖油為基底、融合月桂與丁香的魔法油，不僅能為使用者戴上無形的自信皇冠，更具有強大的排他性——它能宛如利刃般，自動驅逐那些試圖消耗你能量的小人與流言蜚語。</p><p>特別適合自營商、準備爭取晉升的主管，或是需要出席商會談判的關鍵時刻。當你將它塗抹於身，月桂的榮耀與杜松的淨化將為你披上權威的戰袍，在業界中閃耀出無法被忽視的光芒。</p>`, quote: "戴上無形的皇冠，讓實力成為你最堅不可摧的鎧甲。", baseOil: "橄欖油", ingredients: ["月桂", "丁香", "羅馬洋甘菊", "甜橙", "杜松"], chartLabels: ['能量強度', '氣場共振', '意識清明', '事業擴張', '自信權威'], chartData: [90, 85, 75, 100, 95], chartColor: 'rgba(197, 160, 89, 0.15)', borderColor: '#C5A059' },
+            breaking: { name: "破魔之誓", subname: "Oath of Breaking", target: "深受困境限制者 / 感覺能量受阻者", effect: "解除束縛與詛咒、突破現有瓶頸與限制。", imgSrc: "oath_of_breaking_imagery.jpg", keywords: ["#破除詛咒", "#突破困境", "#能量結界", "#深層淨化"], story: `<p>破魔之誓的出現，始於一次為摯友解圍的請託。當時他正深陷於某種難以言喻的負面牽絆與惡意之中，生活與事業皆面臨著難以突破的泥沼。</p><p>為了斬斷這層無形的枷鎖，我們選用了具有強大驅魔特性的牛膝草，結合黑胡椒的爆發力與乳香的神聖高頻，並以浸透陽光能量的「聖約翰草浸泡油」為基底。這不僅是一瓶解咒的魔法油，更是對靈魂下達的一道破魔指令。</p><p>它意外地展現了極其強悍的效果，不僅瓦解了外來的惡意，更推動使用者打破了自我設限的心理瓶頸。如果你正感覺被現有的困境困住，或是深受不明的負面能量干擾，破魔之誓將為你撕裂黑暗，重新奪回生命的主導權。</p>`, quote: "斬斷無形的枷鎖，在廢墟中重建你的絕對領域。", baseOil: "聖約翰草浸泡油", ingredients: ["檸檬", "牛膝草", "杜松", "乳香", "黑胡椒"], chartLabels: ['能量強度', '氣場共振', '意識清明', '屏障建立', '破除限制'], chartData: [100, 80, 85, 95, 100], chartColor: 'rgba(120, 20, 20, 0.1)', borderColor: '#781414' },
+            mirror: { name: "心映萬象", subname: "Mirror of Manifestation", target: "新月滿月許願者 / 渴望達成顯化目標者", effect: "許願與顯化祝福，放大內留意圖與共振。", imgSrc: "mirror_of_manifestation_imagery.jpg", keywords: ["#願景顯化", "#心想事成", "#新月祈願", "#高頻共振"], story: `<p>每一絲意念，都是形塑現實的種子；而心映萬象，便是那滋養種子發芽的豐沛泉源。這款配方最初是為了配合一場名為「夢想成真」的深度冥想課程而創作，旨在協助學員在下沈的腦波狀態中，更清晰地描繪並錨定自己的心願。</p><p>我們以如液體黃金般的金黃荷荷芭油為基底，滴入佛手柑的明亮與月桂的成功印記。這是一款極度純粹的「顯化放大器」，它不限定你的願望為何，而是如同一面澄澈的鏡子，如實反映並放大你內心的渴望。</p><p>無論是在新月播種意圖、滿月感恩收成，亦或是在任何一個需要奇蹟的日常片刻，將它塗抹於掌心深呼吸，它將協助你的頻率與宇宙共振，讓意念化為真實的顯影。</p>`, quote: "你的意念是種子，而整個宇宙都是你的土壤。", baseOil: "金黃荷荷芭油", ingredients: ["月桂", "佛手柑", "乳香", "牛膝草", "迷迭香"], chartLabels: ['能量強度', '氣場共振', '意識清明', '願景顯化', '靈感直覺'], chartData: [75, 100, 90, 95, 85], chartColor: 'rgba(217, 119, 54, 0.1)', borderColor: '#D97736' }
+        };
+
+        let scentChart;
+        function initChart(labels, data, bgColor, borderColor) {
+            const ctx = document.getElementById('scentRadarChart').getContext('2d');
+            if (scentChart) scentChart.destroy();
+            scentChart = new Chart(ctx, { type: 'radar', data: { labels: labels, datasets: [{ data: data, backgroundColor: bgColor, borderColor: borderColor, pointBackgroundColor: '#1A1A1A', borderWidth: 1, pointRadius: 2 }] }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: 'rgba(26, 26, 26, 0.05)' }, grid: { color: 'rgba(26, 26, 26, 0.1)' }, pointLabels: { font: { family: "'Noto Sans TC'", size: 9 }, color: '#1A1A1A' }, ticks: { display: false, stepSize: 20 }, suggestedMin: 0, suggestedMax: 100 } }, plugins: { legend: { display: false } } } });
+        }
+
+        function switchProduct(id) {
+            const data = productData[id]; const container = document.getElementById('content-display');
+            document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active')); document.getElementById(`tab-${id}`).classList.add('active');
+            container.style.opacity = '0'; container.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                const imgElem = document.getElementById('product-img'); const fallbackElem = document.getElementById('img-fallback');
+                imgElem.style.display = 'block'; fallbackElem.style.display = 'none'; imgElem.src = data.imgSrc;
+                document.getElementById('fallback-title').innerText = data.subname; document.getElementById('fallback-name').innerText = data.name;
+                document.getElementById('product-target').innerText = `適用：${data.target}`; document.getElementById('product-effect').innerText = data.effect;
+                document.getElementById('product-name').innerHTML = `${data.name}<br><span class="text-2xl text-alchemia-gray">${data.subname}</span>`;
+                document.getElementById('product-story').innerHTML = data.story;
+                const quoteElem = document.getElementById('product-quote'); if(quoteElem) quoteElem.innerText = `"${data.quote}"`;
+                const kwContainer = document.getElementById('product-keywords'); kwContainer.innerHTML = ''; data.keywords.forEach(kw => { kwContainer.innerHTML += `<span>${kw}</span>`; });
+                document.getElementById('base-oil').innerText = `基底：${data.baseOil}`;
+                const tagContainer = document.getElementById('ingredient-tags'); tagContainer.innerHTML = ''; data.ingredients.forEach(ing => { const span = document.createElement('span'); span.className = 'ingredient-tag'; span.innerText = ing; tagContainer.appendChild(span); });
+                initChart(data.chartLabels, data.chartData, data.chartColor, data.borderColor);
+                container.style.opacity = '1'; container.style.transform = 'translateY(0)';
+            }, 400);
+        }
+        window.onload = () => { switchProduct('victory'); };
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儀式祭壇道具與晶礦客製｜無界煉金 Alchemia Sine Fine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }, colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A', gold: '#C5A059' } }, letterSpacing: { 'widest-xl': '0.3em' } } } }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .process-num { font-family: '"Cormorant Garamond"', serif; font-size: 4rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(26,26,26,0.2); transition: all 0.5s ease; }
+        .process-card:hover .process-num { color: #1A1A1A; -webkit-text-stroke: 0px; }
+        .imagery-container { position: relative; overflow: hidden; background-color: #EAEAE8; }
+        .imagery-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%) contrast(1.1); transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .imagery-container:hover .imagery-img { transform: scale(1.05); }
+        .img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; background: #1A1A1A; color: #EAEAE8; font-size: 12px; letter-spacing: 0.1em; text-align: center; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="hover:text-alchemia-accent transition-all">煉金知識庫</a>
+                <a href="ritual_sets.html" class="hover:text-alchemia-accent transition-all">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="hover:text-alchemia-accent transition-all">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <div class="relative group cursor-pointer border-b border-alchemia-accent pb-1">
+                    <span class="text-alchemia-dark hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg text-alchemia-accent">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">能量維護與祝聖</a>
+                    </div>
+                </div>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="px-5 py-2 bg-alchemia-dark text-white hover:bg-alchemia-accent transition-all">預購表單</a>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2 text-alchemia-accent">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2">能量維護與祝聖</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="block py-3 bg-alchemia-dark text-white">預購表單</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="h-[65vh] flex flex-col justify-center items-center text-center px-6 pt-20 bg-alchemia-dark text-white relative overflow-hidden">
+        <div class="z-10" data-aos="fade-up" data-aos-duration="1200">
+            <span class="text-alchemia-accent text-xs tracking-widest-xl uppercase mb-6 block font-medium">Bespoke Alchemy III</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 tracking-widest leading-tight uppercase">儀式祭壇道具<br>與晶礦客製</h1>
+            <div class="w-16 h-px bg-white/30 mx-auto my-8"></div>
+            <p class="text-white/60 text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose">將高維度的意圖 ‧ 定錨於物質界的實體載體</p>
+        </div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none flex justify-center items-center">
+            <div class="w-[100vw] h-[100vw] md:w-[60vw] md:h-[60vw] border border-white rotate-45 absolute"></div>
+            <div class="w-[80vw] h-[80vw] md:w-[45vw] md:h-[45vw] border border-white rotate-12 absolute"></div>
+        </div>
+    </section>
+
+    <!-- 核心理念 -->
+    <section class="py-24 px-6 bg-white border-b border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-24">
+                <div class="lg:col-span-5" data-aos="fade-right">
+                    <h2 class="text-3xl font-serif tracking-widest mb-8 leading-snug uppercase">尋找與您靈魂<br>共振的礦石。</h2>
+                    <div class="space-y-6 text-alchemia-dark text-sm font-light leading-loose text-justify">
+                        <p>在無界煉金的系統中，礦石與祭壇道具從來不僅僅是裝飾品。萬物皆有靈，晶礦是地球經歷千萬年高壓淬鍊而成的能量儲存器，它們各自攜帶著截然不同的幾何結構與震動頻率。</p>
+                        <p>無論您是正在籌備個人專屬的靈修祭壇、需要特定的魔法道具，或是單純渴望尋找一顆能支持您當下生命狀態的水晶原礦，我們都能為您進行深度的媒合與代尋。</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 imagery-container aspect-[16/9] shadow-lg" data-aos="fade-left">
+                    <img src="bespoke_crystals_imagery.jpg" alt="晶礦與祭壇道具客製" class="imagery-img" onerror="this.style.display='none'; document.getElementById('fb-img3').style.display='flex';">
+                    <div id="fb-img3" class="img-placeholder" style="display:none;"><span class="font-serif text-lg mb-2">Sacred Objects</span><span class="opacity-60">[ 建議放置：精美的原礦、水晶陣或祭壇道具攝影照 ]</span></div>
+                </div>
+            </div>
+
+            <!-- 客製服務範疇 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-alchemia-dark/10 pt-16">
+                <div data-aos="fade-up">
+                    <span class="text-alchemia-accent font-serif text-2xl block mb-4">I</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">高頻晶礦代尋與配對</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">根據您的預算、能量需求或特定的礦石種類，為您在世界各地尋找品質純淨、頻率相符的原礦、滾石或水晶球。</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-alchemia-accent font-serif text-2xl block mb-4">II</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">個人祭壇道具配置</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">為您的居家或工作空間規劃專屬的靈性祭壇。包含能量水晶陣的礦石挑選、儀式用布、燃燒器皿或水晶激光柱配置。</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-alchemia-accent font-serif text-2xl block mb-4">III</span>
+                    <h3 class="text-sm tracking-widest font-bold uppercase mb-4">深層淨化與意圖設定</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">所有交付到您手中的晶礦與道具，皆會由煉金師進行徹底的能量淨化，並為其「設定意圖」，讓它成為只為您服務的神聖法器。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⚠️ 購買須知 -->
+    <section class="py-20 px-6 bg-alchemia-bg">
+        <div class="max-w-4xl mx-auto bg-white border border-alchemia-dark/10 p-8 md:p-12 shadow-sm text-center relative" data-aos="zoom-in">
+            <h3 class="text-xl md:text-2xl font-serif tracking-widest uppercase mb-6 mt-2">關於礦石代尋的溫馨提醒</h3>
+            <p class="text-sm text-alchemia-dark leading-loose font-light mb-6 max-w-2xl mx-auto">每一顆天然晶礦都是地球獨一無二的藝術品，包含其冰裂紋、雲霧與共生礦物，皆為其生命歷程的印記，這並非瑕疵，而是天然的證明。</p>
+            <p class="text-sm text-alchemia-dark leading-loose font-light max-w-2xl mx-auto mb-8">此外，稀有或特定型態的高頻礦石需要緣分與時間尋找，<strong class="font-medium text-alchemia-accent">代尋時間將視礦石稀有度而定，可能需要數週至一個月以上的等待期</strong>，感謝您的耐心與理解。</p>
+        </div>
+    </section>
+
+    <!-- 服務流程 -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-20 text-center md:text-left" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">The Process</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase">晶礦客製流程</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <div class="relative pl-16" data-aos="fade-up">
+                    <span class="process-num absolute left-0 top-[-1.5rem] opacity-30">01</span>
+                    <h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">需求提出與預算評估</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light">透過表單告訴我們您的需求、尺寸偏好以及預算範圍。我們將評估是否能為您進行代尋。</p>
+                </div>
+                <div class="relative pl-16" data-aos="fade-up" data-aos-delay="100">
+                    <span class="process-num absolute left-0 top-[-1.5rem] opacity-30">02</span>
+                    <h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">尋覓與確認</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light">尋找到合適的礦石後，將會提供照片/影片與詳細報價供您確認。若您感受到了共鳴，我們即為您保留該物件。</p>
+                </div>
+                <div class="relative pl-16" data-aos="fade-up" data-aos-delay="200">
+                    <span class="process-num absolute left-0 top-[-1.5rem] opacity-30">03</span>
+                    <h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">煉金淨化與設定</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light">煉金師將為您的晶礦進行物理與乙太層面的深度清理，並根據您最初的需求，為它設定神聖意圖。</p>
+                </div>
+                <div class="relative pl-16" data-aos="fade-up" data-aos-delay="300">
+                    <span class="process-num absolute left-0 top-[-1.5rem] opacity-30">04</span>
+                    <h3 class="font-bold text-sm tracking-widest uppercase mb-3 text-alchemia-dark">妥善封存與交付</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light">淨化完成後將被妥善封存寄出，避免運送過程沾染雜亂頻率。隨包裹將附上首次啟動與保養建議。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 bg-alchemia-dark text-white text-center">
+        <div class="max-w-2xl mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-serif tracking-widest mb-8 uppercase">遇見與你靈魂共鳴的石頭。</h2>
+            <p class="text-xs text-white/60 leading-loose font-light mb-12">尋找高頻礦石需要機緣與時間，<br>若您已有明確需求，歡迎隨時與我們聯繫討論。</p>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-12 py-4 border border-white text-white text-[10px] tracking-widest hover:bg-white hover:text-alchemia-dark transition-all uppercase">提出晶礦代尋需求</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-alchemia-dark text-white py-20 px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0"><span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span></div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent transition-colors">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script> AOS.init({ once: true, duration: 1000 }); </script>
+</body>
+</html>

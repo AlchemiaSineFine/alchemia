@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儀式套組系列｜無界煉金 Alchemia Sine Fine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }, colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A', gold: '#C5A059' } }, letterSpacing: { 'widest-xl': '0.3em' } } } }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .image-container { position: relative; overflow: hidden; background-color: #EAEAE8; }
+        .ritual-img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .image-container:hover .ritual-img { transform: scale(1.05); }
+        .step-number { font-family: '"Cormorant Garamond"', serif; font-size: 3rem; color: rgba(26,26,26,0.1); position: absolute; top: -1.5rem; left: -1rem; z-index: 0; transition: color 0.3s; }
+        .step-card:hover .step-number { color: rgba(217,119,54,0.2); }
+        .keyword-tag { border: 1px solid rgba(26, 26, 26, 0.15); padding: 4px 12px; font-size: 10px; border-radius: 2px; display: inline-block; margin: 4px 4px 0 0; color: #7A7A7A; transition: all 0.3s ease; }
+        .keyword-tag:hover { border-color: #1A1A1A; color: #1A1A1A; }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 (全站終極同步版) -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="hover:text-alchemia-accent transition-all">煉金知識庫</a>
+                <a href="ritual_sets.html" class="text-alchemia-accent transition-all border-b border-alchemia-accent pb-1">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="hover:text-alchemia-accent transition-all">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <!-- 專屬服務下拉選單 -->
+                <div class="relative group cursor-pointer border-b border-transparent pb-1">
+                    <span class="hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent transition-colors">能量維護與祝聖</a>
+                    </div>
+                </div>
+                
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="px-5 py-2 bg-alchemia-dark text-white hover:bg-alchemia-accent transition-all">預購表單</a>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <!-- 手機版選單 -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2 text-alchemia-accent">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2">能量維護與祝聖</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="block py-3 bg-alchemia-dark text-white">預購表單</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative bg-white overflow-hidden pt-20 border-b border-alchemia-dark/5">
+        <div class="z-10 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+            <span class="text-alchemia-accent text-xs tracking-widest-xl uppercase mb-6 block font-medium">Flagship Ritual Experience</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif mb-6 tracking-widest leading-tight uppercase">
+                秘儀煉金套組<br>
+                <span class="text-3xl md:text-5xl text-alchemia-gray italic mt-4 block">重生 ReBirth</span>
+            </h1>
+            <div class="w-16 h-px bg-alchemia-dark mx-auto my-10"></div>
+            <p class="text-alchemia-dark text-sm md:text-base leading-loose font-light max-w-2xl mx-auto mb-12 text-justify md:text-center">
+                碎裂不代表結束，而是重生的入口。這是一套專為「能量重塑」設計的系統化居家儀式。我們將古老的煉金智慧化為實體，陪伴您穿越生命的幽谷，從破曉的深沉清理，走向晨光的溫柔綻放。
+            </p>
+            <a href="#editions" class="inline-block px-12 py-4 bg-alchemia-dark text-white text-[10px] tracking-widest-xl hover:bg-alchemia-accent transition-all uppercase shadow-lg">
+                探索兩種版本
+            </a>
+        </div>
+    </section>
+
+    <!-- Visual Showcase -->
+    <section class="py-24 px-6 bg-alchemia-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">The Altar</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase">儀式祭壇全貌</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <div class="image-container aspect-[3/4] shadow-xl bg-white" data-aos="fade-right">
+                    <img src="IMG_20251210_211627-p圖.jpg" alt="重生套組祭壇全景" class="ritual-img">
+                </div>
+                <div class="image-container aspect-[3/4] shadow-xl bg-white md:mt-24" data-aos="fade-left">
+                    <img src="IMG_20251210_213036-p圖拷貝.jpg" alt="重生套組物件細節" class="ritual-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 雙版本介紹 -->
+    <section id="editions" class="py-24 px-6 bg-white border-t border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">Two Editions</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase mb-6">《破曉》與《晨光》版本</h2>
+                <p class="text-sm text-alchemia-dark leading-loose font-light max-w-2xl mx-auto">
+                    本次重生系列一共推出兩種組合。兩種版本皆擁有完整的儀式工具，但配備的「主礦石」與「能量噴霧」並不相同，可依照您個人當下的能量狀態與需求進行選擇。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- 破曉 -->
+                <div class="bg-alchemia-bg border border-alchemia-dark/5 p-8 md:p-12 shadow-sm hover:shadow-md transition-shadow relative" data-aos="fade-up">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#1A1A1A]"></div>
+                    <span class="text-[10px] tracking-widest uppercase text-alchemia-gray font-bold block mb-4">Edition I</span>
+                    <h3 class="text-3xl font-serif tracking-widest mb-2 uppercase">重生：破曉</h3>
+                    <p class="text-xs text-alchemia-gray tracking-widest mb-6 uppercase">Nigrum Alba</p>
+                    <div class="mb-6 flex flex-wrap">
+                        <span class="keyword-tag">#穩定</span><span class="keyword-tag">#守護</span><span class="keyword-tag">#淨化</span><span class="keyword-tag">#覺醒</span>
+                    </div>
+                    <p class="text-sm text-alchemia-dark leading-loose font-light mb-8 text-justify">
+                        如同黎明前的黑暗，這是一款專為「界線建立、能量排除、穩定重整」所設計的儀式組合。有如穿越夜的勇者，召喚內在原始的守護與力量。適合正在經歷混亂、壓力、能量過載或急需清理的人。
+                    </p>
+                    <div class="space-y-4 border-t border-alchemia-dark/10 pt-6">
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">主礦石能量</p><p class="text-sm font-medium tracking-widest">黑碧璽 Black Tourmaline</p></div>
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">精油噴霧香調</p><p class="text-sm font-light">杜松果、月桂、廣藿香、沒藥、迷迭香</p></div>
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">主要氣味印象</p><p class="text-sm font-light text-alchemia-gray">煙燻感、深沉草本、木質溫熱</p></div>
+                    </div>
+                </div>
+
+                <!-- 晨光 -->
+                <div class="bg-white border border-alchemia-dark/5 p-8 md:p-12 shadow-md hover:shadow-lg transition-shadow relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-alchemia-gold"></div>
+                    <span class="text-[10px] tracking-widest uppercase text-alchemia-gold font-bold block mb-4">Edition II</span>
+                    <h3 class="text-3xl font-serif tracking-widest mb-2 uppercase">重生：晨光</h3>
+                    <p class="text-xs text-alchemia-gray tracking-widest mb-6 uppercase">Lumen Aurum</p>
+                    <div class="mb-6 flex flex-wrap">
+                        <span class="keyword-tag">#純淨</span><span class="keyword-tag">#再生</span><span class="keyword-tag">#柔韌</span><span class="keyword-tag">#信念</span>
+                    </div>
+                    <p class="text-sm text-alchemia-dark leading-loose font-light mb-8 text-justify">
+                        象徵夜色褪去後的光明，這是一款設計給「召喚希望、溫柔照拂、重啟意識」的儀式組合。溫潤地喚醒心中柔亮的那束光，非常適合準備開展新旅程、正在經歷療癒過程，或是渴望重拾信心的人。
+                    </p>
+                    <div class="space-y-4 border-t border-alchemia-dark/10 pt-6">
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">主礦石能量</p><p class="text-sm font-medium tracking-widest text-alchemia-gold">白阿賽水晶 Azeztulite</p></div>
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">精油噴霧香調</p><p class="text-sm font-light">白玉蘭、玫瑰天竺葵、檸檬馬鞭草、岩蘭草、花梨木</p></div>
+                        <div><p class="text-[10px] tracking-widest font-bold uppercase text-alchemia-gray mb-1">主要氣味印象</p><p class="text-sm font-light text-alchemia-gray">明亮、細膩、花香中帶有草本基調</p></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-10 py-3 bg-alchemia-dark text-white text-[9px] tracking-widest uppercase hover:bg-alchemia-accent transition-all">前往預購表單選擇版本 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 內容物解析 -->
+    <section class="py-24 px-6 bg-alchemia-bg border-t border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">What's Inside</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase">完整儀式工具解析</h2>
+                <p class="text-[10px] text-alchemia-gray mt-4 tracking-widest uppercase">七大核心煉金物件，構築您的專屬祭壇</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">I. 30ml 能量噴霧</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Energy Spray (依版本配置)</p><p class="text-sm text-alchemia-dark leading-loose font-light">瞬間轉換空間與個人氣場，作為儀式啟動的關鍵鑰匙。依據您選擇的套組版本（破曉 / 晨光），調配對應頻率的專屬煉金香氣。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up" data-aos-delay="100"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">II. 核心原礦晶石</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Core Crystal (依版本配置)</p><p class="text-sm text-alchemia-dark leading-loose font-light">作為能量的實體定錨點，承載並放大您的專屬意圖。依據版本將搭配與之共振的「黑碧璽」或「白阿賽水晶」原礦一顆。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up" data-aos-delay="200"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">III. 秘儀草藥香粉</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Sacred Herbal Powder</p><p class="text-sm text-alchemia-dark leading-loose font-light">嚴選神聖植物研磨。透過火元素的燃燒轉化，將植物的物質型態化為乙太能量，進行深度的空間與心靈清理。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up" data-aos-delay="300"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">IV. 水晶激光柱</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Crystal Laser Wand</p><p class="text-sm text-alchemia-dark leading-loose font-light">引導與聚焦能量的神聖魔杖。協助您在空間中畫出保護結界，或將意念精準、強力地投射至宇宙。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up" data-aos-delay="400"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">V. 60*60 儀式祭壇布</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Ritual Altar Cloth</p><p class="text-sm text-alchemia-dark leading-loose font-light">專屬的神聖範圍界定。展開布面，即是在日常喧囂的空間中，劃出絕對專屬且不受干擾的靈性聖域。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8" data-aos="fade-up" data-aos-delay="500"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">VI. 使用說明手冊</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Instruction Manual</p><p class="text-sm text-alchemia-dark leading-loose font-light">詳盡的步驟指引與心法解析。即使是初學者，也能跟隨文字的引導，安心且沈穩地完成整場煉金儀式。</p></div>
+                <div class="border-t border-alchemia-dark/10 pt-8 md:col-span-2 lg:w-1/2 lg:mx-auto" data-aos="fade-up" data-aos-delay="600"><h3 class="text-xl font-serif tracking-widest mb-2 uppercase">VII. 專屬收納包</h3><p class="text-[10px] text-alchemia-accent tracking-widest mb-4 uppercase">Exclusive Storage Bag</p><p class="text-sm text-alchemia-dark leading-loose font-light">質感的隨身收納。在儀式結束後，將神聖工具妥善封存，保護其能量不受外界干擾，也方便您隨身攜帶。</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 儀式三步驟指南 -->
+    <section class="py-24 px-6 bg-alchemia-dark text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block">The Journey</span>
+                <h2 class="text-3xl font-serif tracking-widest uppercase">儀式實作指南</h2>
+                <p class="text-[10px] text-white/50 mt-4 tracking-widest uppercase">每天留給自己 15 分鐘的神聖時光</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left relative">
+                <div class="hidden md:block absolute top-12 left-0 w-full h-px bg-white/10 z-0"></div>
+                <div class="step-card relative z-10 pt-8" data-aos="fade-up">
+                    <span class="step-number">01</span>
+                    <h3 class="text-lg tracking-widest mb-4 font-bold uppercase">淨化與結界</h3>
+                    <p class="text-[10px] text-alchemia-accent mb-4 tracking-widest uppercase">Purification</p>
+                    <p class="text-sm text-white/70 leading-loose font-light">展開「60*60 儀式祭壇布」建立專屬聖域。噴灑套組「能量噴霧」，並手持「水晶激光柱」沿著邊緣劃下保護結界，切斷所有外界干擾。</p>
+                </div>
+                <div class="step-card relative z-10 pt-8" data-aos="fade-up" data-aos-delay="100">
+                    <span class="step-number">02</span>
+                    <h3 class="text-lg tracking-widest mb-4 font-bold uppercase">轉化與釋放</h3>
+                    <p class="text-[10px] text-alchemia-accent mb-4 tracking-widest uppercase">Transformation</p>
+                    <p class="text-sm text-white/70 leading-loose font-light">在安全的器皿中點燃「草藥香粉」。凝視煙霧冉冉升起，將內心的恐懼、迷惘與舊有模式，隨著火元素一同燃燒釋放。</p>
+                </div>
+                <div class="step-card relative z-10 pt-8" data-aos="fade-up" data-aos-delay="200">
+                    <span class="step-number">03</span>
+                    <h3 class="text-lg tracking-widest mb-4 font-bold uppercase">喚醒與重塑</h3>
+                    <p class="text-[10px] text-alchemia-accent mb-4 tracking-widest uppercase">Rebuilding</p>
+                    <p class="text-sm text-white/70 leading-loose font-light">翻開「使用說明手冊」閱讀引導語，雙手包覆「核心原礦晶石」置於心輪。在純淨的狀態中，向宇宙下達全新的意圖。</p>
+                </div>
+            </div>
+            
+            <div class="mt-24 text-center" data-aos="fade-up">
+                <p class="font-serif italic text-xl md:text-2xl text-white/90 mb-8">"完成儀式，迎接全新的自己。"</p>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="inline-block px-12 py-4 bg-white text-alchemia-dark text-[10px] tracking-widest hover:bg-alchemia-accent hover:text-white transition-all uppercase font-medium">啟動你的重生旅程</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-alchemia-dark text-white py-20 px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0"><span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span></div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent transition-colors">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent transition-colors">Order Form</a>
+            </div>
+        </div>
+    </footer>
+
+    <script> AOS.init({ once: true, duration: 1000 }); </script>
+</body>
+</html>

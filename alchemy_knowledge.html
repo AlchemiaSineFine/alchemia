@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>煉金知識庫｜無界煉金 Alchemia Sine Fine</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] },
+                    colors: { alchemia: { bg: '#F5F5F3', surface: '#EAEAE8', dark: '#1A1A1A', accent: '#D97736', gray: '#7A7A7A', gold: '#C5A059' } },
+                    letterSpacing: { 'widest-xl': '0.3em' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F5F5F3; color: #1A1A1A; overflow-x: hidden; }
+        .glass-nav { background: rgba(245, 245, 243, 0.9); backdrop-filter: blur(10px); }
+        .monochrome-gradient { background: linear-gradient(135deg, #1A1A1A 0%, #7A7A7A 50%, #EAEAE8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .chapter-num { font-family: '"Cormorant Garamond"', serif; font-size: 8rem; line-height: 0.8; color: transparent; -webkit-text-stroke: 1px rgba(26,26,26,0.1); position: absolute; top: -2rem; left: -1rem; z-index: 0; }
+        
+        .imagery-container { position: relative; overflow: hidden; background-color: #EAEAE8; }
+        .imagery-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%) contrast(1.1); transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .imagery-container:hover .imagery-img { transform: scale(1.05); }
+        .img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; background: #EAEAE8; color: #7A7A7A; font-size: 12px; letter-spacing: 0.1em; text-align: center; padding: 2rem; border: 1px solid rgba(26,26,26,0.05); }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed">
+
+    <!-- 導覽列 (加入煉金知識庫) -->
+    <nav class="fixed top-0 w-full glass-nav z-50 border-b border-alchemia-dark/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl tracking-widest-xl font-semibold uppercase hover:text-alchemia-accent transition-colors">ALCHEMIA SINE FINE</a>
+            <div class="hidden xl:flex space-x-5 text-[11px] tracking-widest font-medium uppercase items-center">
+                <a href="index.html#brand" class="hover:text-alchemia-accent transition-all">品牌理念</a>
+                <a href="alchemy_knowledge.html" class="text-alchemia-accent transition-all border-b border-alchemia-accent pb-1">煉金知識庫</a>
+                <a href="ritual_sets.html" class="hover:text-alchemia-accent transition-all">儀式套組</a>
+                <a href="ritual_sprays.html" class="hover:text-alchemia-accent transition-all">魔法噴霧</a>
+                <a href="ritual_oils.html" class="hover:text-alchemia-accent transition-all">魔法油</a>
+                <a href="spell_jars.html" class="hover:text-alchemia-accent transition-all">魔法罐</a>
+                <a href="magic_candles.html" class="hover:text-alchemia-accent transition-all">魔法蠟燭</a>
+                
+                <!-- 客製與售後服務下拉 -->
+                <div class="relative group cursor-pointer border-b border-transparent pb-1">
+                    <span class="hover:text-alchemia-accent transition-all">專屬服務 ▼</span>
+                    <div class="absolute top-full right-0 mt-2 w-48 bg-white border border-alchemia-dark/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col z-50 text-alchemia-dark">
+                        <a href="bespoke_topic.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent">魔法專題</a>
+                        <a href="bespoke_astrology.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent">個人星盤客製</a>
+                        <a href="bespoke_crystals.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent">祭壇道具與晶礦</a>
+                        <div class="h-px bg-alchemia-dark/10 my-1 w-full"></div>
+                        <a href="energy_maintenance.html" class="px-4 py-3 hover:bg-alchemia-bg hover:text-alchemia-accent">能量維護與祝聖</a>
+                    </div>
+                </div>
+            </div>
+            <button class="xl:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-alchemia-dark/5 p-6 space-y-4 text-[11px] tracking-widest text-center uppercase h-[80vh] overflow-y-auto">
+            <a href="index.html#brand" class="block py-2">品牌理念</a>
+            <a href="alchemy_knowledge.html" class="block py-2 text-alchemia-accent">煉金知識庫</a>
+            <a href="ritual_sets.html" class="block py-2">儀式套組</a>
+            <a href="ritual_sprays.html" class="block py-2">魔法噴霧</a>
+            <a href="ritual_oils.html" class="block py-2">魔法油</a>
+            <a href="spell_jars.html" class="block py-2">魔法罐</a>
+            <a href="magic_candles.html" class="block py-2">魔法蠟燭</a>
+            <div class="h-px bg-alchemia-dark/10 my-2"></div>
+            <span class="block py-2 text-alchemia-gray font-bold">專屬客製與售後</span>
+            <a href="bespoke_topic.html" class="block py-2">魔法專題服務</a>
+            <a href="bespoke_astrology.html" class="block py-2">個人星盤客製</a>
+            <a href="bespoke_crystals.html" class="block py-2">祭壇道具與晶礦</a>
+            <a href="energy_maintenance.html" class="block py-2">能量維護與祝聖</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[50vh] flex flex-col justify-center items-center text-center px-6 pt-24 bg-white relative overflow-hidden border-b border-alchemia-dark/5">
+        <div class="z-10" data-aos="fade-up" data-aos-duration="1200">
+            <span class="text-alchemia-accent text-xs tracking-widest-xl uppercase mb-6 block font-medium">Alchemical Grimoire</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 tracking-widest leading-tight uppercase">
+                無界煉金知識庫
+            </h1>
+            <div class="w-16 h-px bg-alchemia-dark/20 mx-auto my-8"></div>
+            <p class="text-alchemia-gray text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose">
+                探尋物質與神性的連結法則 ‧ 解密自然能量的運作奧秘
+            </p>
+        </div>
+    </section>
+
+    <!-- Chapter I: 魔法載體 -->
+    <section class="py-24 px-6 bg-alchemia-bg relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="mb-16 relative" data-aos="fade-up">
+                <span class="chapter-num">I</span>
+                <div class="relative z-10 pt-10 pl-4 md:pl-8">
+                    <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block font-medium">Vessels of Intent</span>
+                    <h2 class="text-3xl font-serif tracking-widest uppercase">魔法的實體載體</h2>
+                    <p class="text-[11px] text-alchemia-gray mt-4 tracking-widest uppercase leading-loose max-w-2xl">
+                        意念是無形的，而載體是意念在物質界的船。不同的元素媒介（水、火、油、土）決定了能量運作的速度與方式。
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 載體 1 -->
+                <div class="bg-white p-8 border border-alchemia-dark/5 shadow-sm hover:shadow-md transition-shadow group" data-aos="fade-up">
+                    <h3 class="font-serif text-xl tracking-widest mb-1 uppercase group-hover:text-alchemia-accent transition-colors">魔法噴霧 <span class="text-[10px] text-alchemia-gray">/ Sprays</span></h3>
+                    <p class="text-[10px] font-bold text-alchemia-dark tracking-widest mb-4 border-b border-alchemia-dark/10 pb-2">水元素 ‧ 瞬間氣場轉化</p>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                        藉由細緻的水霧，將植物純露與精油的頻率瞬間擴散於空氣中。運作速度極快，適合用於空間淨化、冥想前氣場重置，或在人群中需要快速建立能量邊界時使用。
+                    </p>
+                </div>
+                <!-- 載體 2 -->
+                <div class="bg-white p-8 border border-alchemia-dark/5 shadow-sm hover:shadow-md transition-shadow group" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-serif text-xl tracking-widest mb-1 uppercase group-hover:text-alchemia-accent transition-colors">魔法油 <span class="text-[10px] text-alchemia-gray">/ Oils</span></h3>
+                    <p class="text-[10px] font-bold text-alchemia-dark tracking-widest mb-4 border-b border-alchemia-dark/10 pb-2">土與水 ‧ 深度貼身融合</p>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                        以植物基底油鎖住精油的高昂頻率。塗抹於肌膚、脈輪或隨身物品上，香氣與能量會隨著體溫緩慢釋放，與個人氣場產生深度的融合，提供長效的個人守護與意圖顯化。
+                    </p>
+                </div>
+                <!-- 載體 3 -->
+                <div class="bg-white p-8 border border-alchemia-dark/5 shadow-sm hover:shadow-md transition-shadow group" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif text-xl tracking-widest mb-1 uppercase group-hover:text-alchemia-accent transition-colors">魔法蠟燭 <span class="text-[10px] text-alchemia-gray">/ Candles</span></h3>
+                    <p class="text-[10px] font-bold text-alchemia-dark tracking-widest mb-4 border-b border-alchemia-dark/10 pb-2">火元素 ‧ 催化與顯化</p>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                        火是神秘學中最強大的轉化媒介。點燃蠟燭能迅速將物質（蠟與精油）轉化為乙太能量，投射至宇宙。極度適合用於許願顯化、與高維度連結，或燃燒釋放不再服務於您的舊有模式。
+                    </p>
+                </div>
+                <!-- 載體 4 -->
+                <div class="bg-white p-8 border border-alchemia-dark/5 shadow-sm hover:shadow-md transition-shadow group" data-aos="fade-up">
+                    <h3 class="font-serif text-xl tracking-widest mb-1 uppercase group-hover:text-alchemia-accent transition-colors">魔法罐 <span class="text-[10px] text-alchemia-gray">/ Spell Jars</span></h3>
+                    <p class="text-[10px] font-bold text-alchemia-dark tracking-widest mb-4 border-b border-alchemia-dark/10 pb-2">土元素 ‧ 長期空間定錨</p>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                        將特定頻率的植物、礦石與意圖層層堆疊並以蠟封存。它是一個微型的能量發電廠，放置於特定空間（如財位、祭壇），能為該場域提供長達一年以上的穩定能量輻射。
+                    </p>
+                </div>
+                <!-- 載體 5 -->
+                <div class="bg-white p-8 border border-alchemia-dark/5 shadow-sm hover:shadow-md transition-shadow group" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-serif text-xl tracking-widest mb-1 uppercase group-hover:text-alchemia-accent transition-colors">魔法香囊 <span class="text-[10px] text-alchemia-gray">/ Sachets</span></h3>
+                    <p class="text-[10px] font-bold text-alchemia-dark tracking-widest mb-4 border-b border-alchemia-dark/10 pb-2">風與土 ‧ 溫和護身陪伴</p>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                        將乾燥的魔法藥草與水晶碎石裝入布袋中。適合隨身攜帶於包包、置於枕下或掛於車內。它的能量釋放溫和且持續，如同一位默默陪伴在身邊的植物護身符。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter II: 水晶智慧 -->
+    <section class="py-24 px-6 bg-white relative overflow-hidden border-t border-alchemia-dark/5">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="mb-16 relative" data-aos="fade-up">
+                <span class="chapter-num" style="color: rgba(26,26,26,0.03); -webkit-text-stroke: 0;">II</span>
+                <div class="relative z-10 pt-10 pl-4 md:pl-8">
+                    <span class="text-alchemia-accent text-[10px] tracking-widest uppercase mb-2 block font-medium">Crystal Wisdom & Cleansing</span>
+                    <h2 class="text-3xl font-serif tracking-widest uppercase">水晶的種類與保養</h2>
+                    <p class="text-[11px] text-alchemia-gray mt-4 tracking-widest uppercase leading-loose max-w-2xl">
+                        地球千萬年淬鍊的結晶。了解它們的結構，並學習如何正確地淨化與照顧這些高頻夥伴。
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- 常見晶體結構 -->
+                <div>
+                    <h3 class="text-lg font-serif tracking-widest mb-6 border-b border-alchemia-dark pb-2">常見晶體與成分特性</h3>
+                    <div class="space-y-6">
+                        <div class="group" data-aos="fade-up">
+                            <h4 class="text-sm font-bold tracking-widest mb-2 text-alchemia-dark group-hover:text-alchemia-accent transition-colors">石英家族 (Quartz Family)</h4>
+                            <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                                包含白水晶、紫水晶、粉晶等。以二氧化矽為主，具有極佳的「記憶、放大與轉化」能量的特性，是魔法運作中最百搭且強大的基礎礦石。
+                            </p>
+                        </div>
+                        <div class="group" data-aos="fade-up">
+                            <h4 class="text-sm font-bold tracking-widest mb-2 text-alchemia-dark group-hover:text-alchemia-accent transition-colors">玉髓與瑪瑙 (Chalcedony & Agate)</h4>
+                            <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                                隱晶質的石英，能量溫和、沉穩且扎實。非常適合用來撫慰受創的情緒、提供長效的安全感與接地（Grounding）效果。
+                            </p>
+                        </div>
+                        <div class="group" data-aos="fade-up">
+                            <h4 class="text-sm font-bold tracking-widest mb-2 text-alchemia-dark group-hover:text-alchemia-accent transition-colors">電氣石/碧璽 (Tourmaline)</h4>
+                            <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                                帶有微弱的壓電性與熱電性。尤其是「黑碧璽」，被譽為最強的清道夫，能強效吸收並轉化環境與個人氣場中的負面能量及電磁波干擾。
+                            </p>
+                        </div>
+                        <div class="group" data-aos="fade-up">
+                            <h4 class="text-sm font-bold tracking-widest mb-2 text-alchemia-dark group-hover:text-alchemia-accent transition-colors">阿賽斯特萊水晶 (Azeztulite)</h4>
+                            <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify">
+                                近年發現的高頻水晶。其振動頻率極高，能快速清理脈輪阻塞，並協助配戴者連結高次元的意識，是覺醒與療癒之路上的強大催化劑。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 淨化方式 -->
+                <div class="bg-alchemia-bg p-8 md:p-12 border border-alchemia-dark/5" data-aos="fade-left">
+                    <h3 class="text-lg font-serif tracking-widest mb-6 border-b border-alchemia-dark/20 pb-2">晶礦淨化守則</h3>
+                    <p class="text-[11px] text-alchemia-gray leading-loose font-light text-justify mb-8">
+                        晶礦在吸收負能或協助您運作魔法後，會變得混濁或疲乏。定期淨化能重置它們的頻率。
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="text-alchemia-accent font-serif text-xl mr-4 leading-none">I</span>
+                            <div>
+                                <h4 class="text-sm font-bold tracking-widest mb-1">煙燻淨化 (Smudging)</h4>
+                                <p class="text-[11px] text-alchemia-gray leading-loose font-light">使用白鼠尾草、秘木、或無界煉金的秘儀香粉，讓植物燃燒的煙霧穿透並帶走晶礦表面的負能量。適合絕大多數礦石。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-alchemia-accent font-serif text-xl mr-4 leading-none">II</span>
+                            <div>
+                                <h4 class="text-sm font-bold tracking-widest mb-1">聲音淨化 (Sound)</h4>
+                                <p class="text-[11px] text-alchemia-gray leading-loose font-light">使用 4096Hz 水晶音叉或頌缽。清脆的聲波能瞬間震散晶礦內部停滯的能量結點，快速且安全。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-alchemia-accent font-serif text-xl mr-4 leading-none">III</span>
+                            <div>
+                                <h4 class="text-sm font-bold tracking-widest mb-1">月光充能 (Moonlight)</h4>
+                                <p class="text-[11px] text-alchemia-gray leading-loose font-light">在滿月前後，將晶礦置於月光下照射一晚。這不僅是淨化，更能為晶礦注入溫柔、直覺與重生的陰性能量。</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-8 p-4 border border-alchemia-dark/10 bg-white">
+                        <p class="text-[10px] text-alchemia-accent tracking-widest font-bold mb-1">⚠️ 煉金師提醒</p>
+                        <p class="text-[10px] text-alchemia-gray leading-relaxed">許多晶礦（如螢石、紫水晶）不耐強烈陽光日曬，會導致褪色；含有鐵質的礦物（如赤鐵礦）或軟礦（如透石膏）嚴禁泡水。若不確定，請優先使用煙燻或聲音淨化。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter III: 萬物共振 -->
+    <section class="py-24 px-6 bg-alchemia-dark text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="mb-16 text-center md:text-left relative" data-aos="fade-up">
+                <h2 class="text-3xl font-serif tracking-widest uppercase">星辰、植物與礦物的共振</h2>
+                <p class="text-[11px] text-white/60 mt-4 tracking-widest uppercase leading-loose max-w-2xl">
+                    "As above, so below." — 如其在上，如其在下。<br>宇宙天體的特質，完美地映射在地球的植物與礦物之中。這也是星盤客製魔法的核心理論基礎。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 太陽 -->
+                <div class="border border-white/10 p-8 hover:border-alchemia-gold transition-colors group" data-aos="fade-up">
+                    <div class="text-alchemia-gold text-3xl font-serif mb-4">☉</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">太陽 Sun</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">生命力、權威、自我實現</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>月桂、甜橙、迷迭香、向日葵</p>
+                        <p><span class="text-white/40">對應礦物：</span>黃水晶、日長石、琥珀、黃鐵礦</p>
+                    </div>
+                </div>
+
+                <!-- 月亮 -->
+                <div class="border border-white/10 p-8 hover:border-gray-300 transition-colors group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-gray-300 text-3xl font-serif mb-4">☽</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">月亮 Moon</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">直覺、潛意識、情緒療癒</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>茉莉、艾草、沒藥、檸檬</p>
+                        <p><span class="text-white/40">對應礦物：</span>月光石、透石膏、白水晶、珍珠</p>
+                    </div>
+                </div>
+
+                <!-- 金星 -->
+                <div class="border border-white/10 p-8 hover:border-pink-300 transition-colors group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-pink-300 text-3xl font-serif mb-4">♀</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">金星 Venus</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">愛、美感、和諧、豐盛</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>玫瑰、天竺葵、依蘭、蘋果</p>
+                        <p><span class="text-white/40">對應礦物：</span>粉晶、孔雀石、菱錳礦、玉</p>
+                    </div>
+                </div>
+
+                <!-- 火星 -->
+                <div class="border border-white/10 p-8 hover:border-red-400 transition-colors group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-red-400 text-3xl font-serif mb-4">♂</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">火星 Mars</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">行動力、勇氣、突破、保護</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>黑胡椒、肉桂、羅勒、大蒜</p>
+                        <p><span class="text-white/40">對應礦物：</span>赤鐵礦、紅瑪瑙、紅寶石、石榴石</p>
+                    </div>
+                </div>
+                
+                <!-- 木星 (Optional expand) -->
+                <div class="border border-white/10 p-8 hover:border-blue-300 transition-colors group" data-aos="fade-up">
+                    <div class="text-blue-300 text-3xl font-serif mb-4">♃</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">木星 Jupiter</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">擴張、幸運、高等智慧、繁榮</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>雪松、丁香、肉豆蔻、紫花苜蓿</p>
+                        <p><span class="text-white/40">對應礦物：</span>青金石、紫水晶、藍寶石、綠松石</p>
+                    </div>
+                </div>
+
+                <!-- 土星 -->
+                <div class="border border-white/10 p-8 hover:border-stone-400 transition-colors group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-stone-400 text-3xl font-serif mb-4">♄</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">土星 Saturn</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">結構、限制、業力、時間</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>廣藿香、岩蘭草、柏樹、紫草</p>
+                        <p><span class="text-white/40">對應礦物：</span>黑曜石、黑瑪瑙、煙晶、赤鐵礦</p>
+                    </div>
+                </div>
+                
+                <!-- 水星 -->
+                <div class="border border-white/10 p-8 hover:border-yellow-200 transition-colors group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-yellow-200 text-3xl font-serif mb-4">☿</div>
+                    <h3 class="text-sm font-bold tracking-widest mb-1 uppercase">水星 Mercury</h3>
+                    <p class="text-[10px] text-white/50 tracking-widest mb-4">溝通、心智、傳遞、學習</p>
+                    <div class="text-[11px] font-light leading-relaxed space-y-2">
+                        <p><span class="text-white/40">對應植物：</span>薄荷、薰衣草、檸檬草、茴香</p>
+                        <p><span class="text-white/40">對應礦物：</span>瑪瑙、黃玉、藍玉髓、螢石</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-alchemia-dark text-white py-20 px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+            <div class="mb-4 md:mb-0">
+                <span class="font-serif text-lg tracking-widest-xl">ALCHEMIA SINE FINE</span>
+            </div>
+            <div class="flex gap-8 opacity-60">
+                <a href="https://www.instagram.com/alchemia_sine_fine/?hl=zh-tw" target="_blank" class="hover:text-alchemia-accent transition-colors">Brand IG</a>
+                <a href="https://forms.gle/LZqswrpB8jxXeyPe6" target="_blank" class="hover:text-alchemia-accent transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+    </script>
+</body>
+</html>
